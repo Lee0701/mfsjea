@@ -1,0 +1,11 @@
+{
+  "name": "mfsjea",
+  "version": "1.0.0",
+  "description": "Converts hangul typed using alphabet mode.",
+  "main": "mfsjea.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lee0701",
+  "license": "Apache-2.0"
+}
