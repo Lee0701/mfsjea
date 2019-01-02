@@ -83,4 +83,4 @@ const jeamfsAuto = function(str) {
   return list[0]
 }
 
-module.exports = {jeamfsList: jeamfsList, jeamfs: jeamfsAuto}
+module.exports = {jeamfsList: jeamfsList, jeamfs: jeamfsAuto, count2350: count2350}
