@@ -69,10 +69,6 @@ const jeamfsORdudgks = (str, fr, to) => to.beol == 3 ? jeamfs(str, fr, to) : dud
 const output = (result, alphabet, hangul) => ({source: alphabet.name, destination: hangul.name, str: result, count: count2350(result), score: count2350(result)*10 + countNumbers(result) + countRegex(result, REGEX_PARENTHESIS)*10 - countRegex(result, REGEX_JAMO)*50})
 const jeamfsList = (str) => ALPHABET_LAYOUTS.flatMap(alphabet => HANGUL_LAYOUTS.map(hangul => output(jeamfsORdudgks(str, alphabet, hangul), alphabet, hangul)))
 
-const jeamfsAuto = function(str) {
-  const list = jeamfsList(str)
-  list.sort((a, b) => b.score - a.score)
-  return list[0]
-}
+const jeamfsAuto = (str) => jeamfsList(str).sort((a, b) => b.score - a.score)[0]
 
 module.exports = {jeamfsList: jeamfsList, jeamfs: jeamfsAuto, count2350: count2350}
