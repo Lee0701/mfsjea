@@ -62,21 +62,12 @@ const convertCompatibleJung = (c) => [...c].map(d => STD_JUNG[COMPAT_JUNG.indexO
 const convertCompatibleJong = (c) => c === '' ? '' : [...c].map(d => CONVERT_JONG[COMPAT_CHO.indexOf(d)])
 
 const dudgks = (str, fr, to) => convert(str, fr.layout, to.layout).replace(HANGUL_SYLLABLE_2, (match, cho, jung, jong) => convertCompatibleCho(to.combination.cho[cho] || cho) + convertCompatibleJung(to.combination.jung[jung] || jung) + convertCompatibleJong(to.combination.jong[jong] || jong)).normalize('NFC')
-
 const jeamfs = (str, fr, to) => convert(str, fr.layout, to.layout).replace(HANGUL_SYLLABLE_3, (match, cho, jung, jong) => (to.combination.cho[cho] || cho) + (to.combination.jung[jung] || jung) + (to.combination.jong[jong] || jong)).normalize('NFC')
 
 const jeamfsORdudgks = (str, fr, to) => to.beol == 3 ? jeamfs(str, fr, to) : dudgks(str, fr, to)
 
-const jeamfsList = function(str) {
-  let results = []
-  ALPHABET_LAYOUTS.forEach(alphabet => {
-    HANGUL_LAYOUTS.forEach(hangul => {
-      const result = jeamfsORdudgks(str, alphabet, hangul)
-      results.push({source: alphabet.name, destination: hangul.name, str: result, count: count2350(result), score: count2350(result)*10 + countNumbers(result) + countRegex(result, REGEX_PARENTHESIS)*10 - countRegex(result, REGEX_JAMO)*50})
-    })
-  })
-  return results
-}
+const output = (result, alphabet, hangul) => ({source: alphabet.name, destination: hangul.name, str: result, count: count2350(result), score: count2350(result)*10 + countNumbers(result) + countRegex(result, REGEX_PARENTHESIS)*10 - countRegex(result, REGEX_JAMO)*50})
+const jeamfsList = (str) => ALPHABET_LAYOUTS.flatMap(alphabet => HANGUL_LAYOUTS.map(hangul => output(jeamfsORdudgks(str, alphabet, hangul), alphabet, hangul)))
 
 const jeamfsAuto = function(str) {
   const list = jeamfsList(str)
