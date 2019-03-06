@@ -11,5 +11,5 @@ const rl = readline.createInterface({
 
 rl.on('line', (line) => {
   const result = mfsjea.jeamfs(line)
-  console.log('BEST RESULT: ' + result.str + ' (' + result.name + ', score: ' + result.score + ')')
+  console.log('BEST RESULT: ' + result.str + ' (' + result.source + '-' + result.destination + ', score: ' + result.score + ')')
 })
