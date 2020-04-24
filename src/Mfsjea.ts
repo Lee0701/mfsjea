@@ -23,7 +23,7 @@ export default class Mfsjea {
         this.scorers = scorers
     }
     score(result: ConvertResult): number {
-        return this.scorers.map(scorer => scorer.calculateScore(result.output) * scorer.weight).reduce((a, c) => a + c) / this.scorers.map(scorer => scorer.weight).reduce((a, c) => a + c)
+        return this.scorers.map(scorer => scorer.calculateScore(result.output) * scorer.weight).reduce((a, c) => a + c, 0) / this.scorers.map(scorer => scorer.weight).reduce((a, c) => a + c, 0)
     }
     convertAll(input: string): ConvertResult[] {
         return this.outputKeyboards.map(outputKeyboard => this.inputKeyboards.map(inputKeyboard => Mfsjea.convert(input, inputKeyboard, outputKeyboard))).flat()
