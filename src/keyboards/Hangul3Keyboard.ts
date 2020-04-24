@@ -1,5 +1,6 @@
 
 import SimpleKeyboard from './SimpleKeyboard'
+import {standardJamoToCompatJamo, compatJamoToStandardJamo} from '../HangulJamo'
 
 export default class Hangul3Keyboard extends SimpleKeyboard {
     combinations: Map<string, string>
@@ -10,10 +11,10 @@ export default class Hangul3Keyboard extends SimpleKeyboard {
         this.decombinations = new Map(Array.from(combinations.entries()).map(e => [e[1], e[0]]))
     }
     convertFrom(input: string): number[] {
-        return super.convertFrom(this.decombinate(input.normalize('NFD')))
+        return super.convertFrom(this.decombinate(compatJamoToStandardJamo(input.normalize('NFD'))))
     }
     convertTo(input: number[]): string {
-        return this.combinate(super.convertTo(input)).normalize('NFC')
+        return standardJamoToCompatJamo(this.combinate(super.convertTo(input)).normalize('NFC'))
     }
     combinate(input: string): string {
         return input.split('').reduce((a, c) => {

@@ -1,5 +1,6 @@
 
-const mfsjea = require('./dist/index.js').Mfsjea.DEFAULT_ENKO
+const {Mfsjea} = require('./dist/index.js')
+const mfsjea = Mfsjea.DEFAULT_ENKO
 
 const readline = require('readline')
 
