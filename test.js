@@ -1,5 +1,5 @@
 
-const mfsjea = require('./mfsjea.js')
+const mfsjea = require('./dist/index.js').DEFAULT_ENKO
 
 const readline = require('readline')
 
@@ -10,6 +10,6 @@ const rl = readline.createInterface({
 });
 
 rl.on('line', (line) => {
-  const result = mfsjea.jeamfs(line)
-  console.log('BEST RESULT: ' + result.str + ' (' + result.source + '-' + result.destination + ', score: ' + result.score + ')')
+  const result = mfsjea.convertBest(line)
+  console.log('BEST RESULT: ' + result.output + ' (' + result.inputName + '-' + result.outputName + ', score: ' + result.score + ')')
 })
