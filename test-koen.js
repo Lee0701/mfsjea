@@ -1,5 +1,5 @@
 
-const {Mfsjea, DictionaryScorer} = require('./dist/index.js')
+const {Mfsjea, DictionaryScorer} = require('./lib/index.js')
 const readline = require('readline')
 
 const words = ''

@@ -1,14 +1,39 @@
 
 const path = require('path')
 
-module.exports = {
+const modules = {
     entry: "./src/index.ts",
-    target: "node",
+    target: "web",
     mode: "production",
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
+                exclude: /node_modules/,
+                use: [
+                    "ts-loader"
+                ]
+            }
+        ]
+    },
+    resolve: {
+        extensions: [".tsx", ".ts", ".js"]
+    },
+    output: {
+        filename: "mfsjea.min.js",
+        path: path.resolve(__dirname, "dist")
+    }
+}
+
+const browser = {
+    entry: "./src/index.ts",
+    target: "web",
+    mode: "production",
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
                 use: [
                     {
                         loader: "babel-loader",
@@ -18,8 +43,7 @@ module.exports = {
                         }
                     },
                     "ts-loader"
-                ],
-                exclude: /node_modules/
+                ]
             }
         ]
     },
@@ -27,8 +51,9 @@ module.exports = {
         extensions: [".tsx", ".ts", ".js"]
     },
     output: {
-        filename: "index.js",
-        path: path.resolve(__dirname, "dist"),
-        libraryTarget: "commonjs2"
+        filename: "mfsjea.min.js",
+        path: path.resolve(__dirname, "dist")
     }
 }
+
+module.exports = [browser]

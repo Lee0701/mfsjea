@@ -2,15 +2,20 @@
   "name": "mfsjea",
   "version": "1.0.0",
   "description": "Converts hangul typed using alphabet mode.",
-  "main": "mfsjea.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "build": "webpack"
+    "build:types": "tsc -d",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "build": "npm run build:types && npm run build:js",
+    "bundle": "webpack"
   },
   "author": "Lee0701",
   "license": "Apache-2.0",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-typescript": "^7.9.0",
     "babel-loader": "^8.1.0",
