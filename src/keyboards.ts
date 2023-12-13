@@ -13,6 +13,12 @@ const COMB_KO_2SET_KS: Record<string, string> = {'ᅩᅡ': 'ᅪ', 'ᅩᅢ': 'ᅫ
 const COMB_KO_3SET_390: Record<string, string> = {'ᄀᄀ':'ᄁ', 'ᄃᄃ':'ᄄ', 'ᄇᄇ':'ᄈ', 'ᄉᄉ':'ᄊ', 'ᄌᄌ':'ᄍ', 'ᅩᅡ':'ᅪ', 'ᅩᅢ':'ᅫ', 'ᅩᅵ':'ᅬ', 'ᅮᅥ':'ᅯ', 'ᅮᅦ':'ᅰ', 'ᅮᅵ':'ᅱ', 'ᅳᅵ':'ᅴ', 'ᆨᆨ':'ᆩ', 'ᆨᆺ':'ᆪ', 'ᆫᆽ':'ᆬ', 'ᆫᇂ':'ᆭ', 'ᆯᆨ':'ᆰ', 'ᆯᆷ':'ᆱ', 'ᆯᆸ':'ᆲ', 'ᆯᆺ':'ᆳ', 'ᆯᇀ':'ᆴ', 'ᆯᇁ':'ᆵ', 'ᆯᇂ':'ᆶ', 'ᆸᆺ':'ᆹ', 'ᆺᆺ':'ᆻ'}
 const COMB_KO_3SET_FINAL: Record<string, string> = {'ᄀᄀ':'ᄁ', 'ᄃᄃ':'ᄄ', 'ᄇᄇ':'ᄈ', 'ᄉᄉ':'ᄊ', 'ᄌᄌ':'ᄍ', 'ᅩᅡ':'ᅪ', 'ᅩᅢ':'ᅫ', 'ᅩᅵ':'ᅬ', 'ᅮᅥ':'ᅯ', 'ᅮᅦ':'ᅰ', 'ᅮᅵ':'ᅱ', 'ᅳᅵ':'ᅴ'} // STRICT mode.
 
+/**
+ * Combines Hangul jamo by a given combination rules table.
+ * @param table an combination rules table.
+ * @param text an input text.
+ * @returns input text, combinations applied.
+ */
 function combine(table: Record<string, string>, text: string): string {
     const combined = text.split('')
         .reduce((a: string[], c: string) => {
@@ -24,6 +30,9 @@ function combine(table: Record<string, string>, text: string): string {
     return combined.join('')
 }
 
+/**
+ * Holds informations about the keyboard layout used in conversion.
+ */
 export class Keyboard {
     name: string
     layout: string
@@ -39,6 +48,9 @@ export class Keyboard {
     }
 }
 
+/**
+ * A keyboard type for Hangul layouts.
+ */
 export class HangulKeyboard extends Keyboard {
     combination: Record<string, string>
     constructor(name: string, layout: string, combination: Record<string, string>) {
@@ -54,6 +66,9 @@ export class HangulKeyboard extends Keyboard {
     }
 }
 
+/**
+ * A specialised keyboard type for Hangul 2-set methods.
+ */
 export class Hangul2SetKeyboard extends Keyboard {
     combination: Record<string, string>
     constructor(name: string, layout: string, combination: Record<string, string>) {
