@@ -4,7 +4,7 @@
   "description": "Converts hangul typed using alphabet mode.",
   "main": "src/index.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "webpack",
     "test": "jest",
     "doc": "typedoc"
   },
@@ -13,8 +13,12 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/jest": "^29.5.11",
+    "dotenv": "^16.3.1",
     "jest": "^29.7.0",
+    "ts-loader": "^9.5.1",
     "typedoc": "^0.25.4",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   }
 }
