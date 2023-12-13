@@ -4,6 +4,7 @@
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
+        "strictNullChecks": true,
         "sourceMap": true,
         "target": "ES6",
         "outDir": "dist"
