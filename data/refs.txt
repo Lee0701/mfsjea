@@ -1,0 +1,4 @@
+English
+    https://github.com/first20hours/google-10000-english/
+Korean
+    https://github.com/hermitdave/FrequencyWords/

@@ -6,6 +6,7 @@
         "preserveConstEnums": true,
         "strictNullChecks": true,
         "sourceMap": true,
+        "resolveJsonModule": true,
         "target": "ES6",
         "lib": ["DOM", "ES2019"],
         "outDir": "dist"
